@@ -5,9 +5,11 @@
 	<meta name="author" content="Rahul Raghuvanshi">
 	<style type="text/css">
 	label {
-		width:180px; display:inline-block; text-align:right; text-align:top;
+		width:180px; display:inline-block; text-align:right; vertical-align:top; margin-bottom: 5px
 	}
 	span {
+		display: inline-block;
+      	vertical-align: top;
 		text-align:center;
 		max-height: 500px;
 	}
@@ -23,11 +25,14 @@
 		width: 360px;
 		height: 50px;
 	}
+	label,input {
+      transition: 0.5s ease-in-out;
+    }
 	</style>
 </head>
 <body>
 <h1>Please Enter Your Details For Our Dating Website!</h1>
-	<form accept="http://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php" method="post" enctype="multipart/form-data">
+	<form action="https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php" method="post" enctype="multipart/form-data">
 		<fieldset>
 			<legend>Your Phase</legend>
 			<label for="imageToUpload">Your image: </label>
@@ -64,7 +69,7 @@
 		<fieldset>
 			<legend>Your Indicators</legend>
 			<label for="height">Height:</label>
-			<span>Short</span><input type="range" min="0" max="100" step="5" value="50" id="height" name="height"><span>Tall</span>
+			<span class="range-labels">Short</span><input type="range" min="0" max="100" step="5" value="50" id="height" name="height"><span>Tall</span>
 			<br>
 			<label for="salary">Salary:</label>
 			<span>Poor</span> <input type="range" min="0" max="100" step="5" value="50" id="salary" name="salary"><span>Rich</span> 
