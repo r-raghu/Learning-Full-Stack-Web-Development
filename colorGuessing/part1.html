@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Color Guessing Game</title>
+</head>
+<body onload="guessColor()">
+	<script type="text/javascript">
+			var color = ["Coral", "Brown", "Blue", "DarkGreen", "FloralWhite", "Violet", "Peru", "Tomato", "Purple", "Ivory", "Salmon", "Snow", "Silver", "Maroon"];
+			var target, color_guessed;
+			var attempt=0;
+			function guessColor () {
+				var finished=false;
+				var random = Math.floor(Math.random()* color.length);
+				color.sort();
+				target = color[random];
+				alert("You will win, if color is " + target + ". But first try something else to test the game.")
+				while(!finished){
+					color_guessed = prompt('I am thinking of one of the following colors: ' + '\n\n'
+								+ color + '\n' + 'What color am i thinking of?');
+					if (color_guessed==null) {
+						finished=confirm("Don't want to play.");
+						continue;
+					};
+					attempt += 1;
+					if(color_guessed==target){
+						alert("Attempt: " + attempt + "\n\n" + "Congretulation" + "\n\n" + "You won after " + attempt + " attempt");
+						finished=true;
+					}
+				}
+
+			}
+	</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Color Guessing Game</title>
+</head>
+<body onload="guessColor()">
+	<script type="text/javascript">
+			var color = ["Coral", "Brown", "Blue", "DarkGreen", "FloralWhite", "Violet", "Peru", "Tomato", "Purple", "Ivory", "Salmon", "Snow", "Silver", "Maroon"];
+			var target, color_guessed;
+			var attempt=0;
+			function guessColor () {
+				var finished=false;
+				var random = Math.floor(Math.random()* color.length);
+				color.sort();
+				target = color[random];
+				while(!finished){
+					color_guessed = prompt("I am thinking of one of the following colors: " + "\n\n"
+								+ color + "\n" + "What color am i thinking of?");
+					if (color_guessed==null) {
+						finished=confirm("Don't want to play.");
+						continue;
+					};
+					attempt += 1;
+					if(check_guess()){
+						finished=true;
+					}
+				}
+
+			}
+
+			function check_guess(){
+				var contain = false;
+				// array every api is very helpful, we can write most of the logic inside, while doing any operation with array 
+				color.every( function(color){
+					if(color_guessed==color)
+						contain=true;
+					return true;
+				})
+
+				if(!contain){
+					alert("Attempt: " + attempt + " Failed" + "\n\n" + "Error: This color is not present in our dictionary. Please choose another one.");
+					return false;
+				}
+				if(color_guessed<target){
+					alert("Attempt: " + attempt + " Failed" + "\n\n" + "Hint: Your color is lower then my color.");
+					return false;
+				}
+				if(color_guessed>target){
+					alert("Attempt: " + attempt + " Failed" + "\n\n" + "Hint: Your color is higher then my color.");
+					return false;
+				}
+				if(color_guessed==target){
+					document.getElementsByTagName("body")[0].style.background=color_guessed;
+					alert("Attempt: " + attempt + "\n\n" + "Congretulation" + "\n\n" + "You won after " + attempt + " attempt");
+					return true;
+				}
+			}
+	</script>
+</body>
+</html>
